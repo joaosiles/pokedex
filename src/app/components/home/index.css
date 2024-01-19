@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-red: #E2350D;
+  }
+  
+  
+  body {
+    .headerDex {
+      background-color: var(--foreground-red);
+      height: 15vh;
+    }
+
+    .contentDex {
+        height: 85vh;
+    }
+  
+  }

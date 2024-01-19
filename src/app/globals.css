@@ -2,15 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-red: #E2350D;
-}
-
-
-body {
-  .headerDex {
-    background-color: var(--foreground-red);
-    height: 200px;
-  }
-
-}
