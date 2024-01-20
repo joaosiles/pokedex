@@ -2,13 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --red: #E2350D;
+    --foreground: #F2F2F2;
+    
+  }
+
 #searchBox {
-    width: 500px;
+    width: 600px;
     height: 45px;
     padding: 5px 15px;
     font-size: 16px;
     border-radius: 20px;
-    background-color: #F2F2F2;
+    background-color: var(--foreground);
 
     input {
         background-color: transparent;
@@ -16,9 +22,55 @@
         width: 100%;
     }
 
+    input:focus {
+        outline: none;
+    }
+
     .icon {
-        color: #E2350D;
+        color: var(--red);
         width: 20px;
         height: 20px;
+        border-radius: 20px;
     }
   }
+
+  #selectBox {
+    position: relative;
+}
+
+#selectBox select {
+    border: 1px solid var(--red);
+    -webkit-appearance: none;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 20px;
+    height: 45px;
+    padding: 3px 40px 3px 15px;
+    color: var(--red);
+    width: 200px;
+}
+
+#selectBox::before,
+#selectBox::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    border-top: 2px solid var(--red);
+    width: 10px;
+}
+
+#selectBox::before {
+    right: 26px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#selectBox::after {
+    right: 20px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+#selectBox select:focus {
+    outline: none;
+}
