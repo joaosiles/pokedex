@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#searchBox {
+    width: 500px;
+    height: 45px;
+    padding: 5px 15px;
+    font-size: 16px;
+    border-radius: 20px;
+    background-color: #F2F2F2;
+
+    input {
+        background-color: transparent;
+        border: 0px;
+        width: 100%;
+    }
+
+    .icon {
+        color: #E2350D;
+        width: 20px;
+        height: 20px;
+    }
+  }
