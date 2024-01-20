@@ -3,6 +3,8 @@ import Image from 'next/image'
 import pokeball from './img/pokeball.svg'
 import synvia from './img/synvia-A.svg'
 import FilterTop from '../filter-top'
+import FilterLeft from '../filter-left'
+import Card from '../card'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faSignOut } from '@fortawesome/free-solid-svg-icons'
 
@@ -31,8 +33,12 @@ export default function Home() {
       </div>
 
       <div className='flex flex-row contentDex my-4  mx-20'>
-        <div className='flex w-1/5 h-dvh'>menu</div>
-        <div className='flex w-4/5 h-dvh'>content</div>
+        <div className='flex w-1/5 h-dvh'>
+          <FilterLeft></FilterLeft>
+        </div>
+        <div className='flex w-4/5 h-dvh'>
+          <Card></Card>
+        </div>
       </div>     
     </main>
   )
