@@ -3,6 +3,8 @@ import Image from 'next/image'
 import pokeball from './img/pokeball.svg'
 import synvia from './img/synvia-A.svg'
 import FilterTop from '../filter-top'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch, faSignOut } from '@fortawesome/free-solid-svg-icons'
 
 export default function Home() {
   return (
@@ -13,13 +15,14 @@ export default function Home() {
             src={pokeball}
             alt='Pokedex'
           />
-          <h2 className='pl-4'>Pokedex</h2>
+          <span className='pl-4 title'>Pokédex</span>
         </div>
-        <div className='grow h-14 flex flex-end pr-2' dir='rtl'>
+        <div className='grow h-14 flex flex-end pr-2 items-center' dir='rtl'>
+          <FontAwesomeIcon className='icon' icon={faSignOut} />
           <Image
             src={synvia}
             alt='Synvia'
-          />
+          />          
         </div>
       </div>
 

@@ -15,7 +15,7 @@ const FilterTop = (props) => {
             <FontAwesomeIcon className='icon' icon={faSearch} />                
         </div>
         <div id='selectBox' className='flex flex-row justify-end w-full my-2 py-3'>
-            <label for='selectTop' className='my-2 mr-3'>Ordenar por</label>
+            <label className='my-2 mr-3'>Ordenar por</label>
                 <select id='selectTop'>
                 <option value="highNumber">Maior número</option>
                 <option value="lowerNumber">Menor número</option>                

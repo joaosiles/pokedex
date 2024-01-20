@@ -1,5 +1,6 @@
 :root {
     --foreground-red: #E2350D;
+    --white: #FFFFFF;
   }
   
   
@@ -11,6 +12,19 @@
 
     .contentDex {
         height: 85vh;
+    }
+
+    .title {
+        font-size: 2rem;
+        color: var(--white) ;
+        font-weight: 500;
+    }
+    
+    .icon {
+        width: 25px;
+        height: 25px;
+        color: var(--white);
+        margin-left: 20px;
     }
   
   }
