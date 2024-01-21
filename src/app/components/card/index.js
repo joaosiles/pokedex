@@ -1,14 +1,17 @@
 import React from 'react'
 import './index.css'
 
-const Card = (props) => {
-    return (
+const Card = (pokemonData) => {
+
+console.log(pokemonData.pokemonData)
+  
+return (
     <div id='card' className='flex flex-wrap'>
         <div className='pokemon'>
             <img
-            src="https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/bulbasaur.png"
-            alt="Bulbasaur"
-                />
+              src={pokemonData ? pokemonData.pokemonData.sprites.normal : ''}
+              alt={pokemonData ? pokemonData.pokemonData.name : ''}
+            />
             <div>
                 <div className='number mt-2'>Nº 001</div>
                 <div className='name'>Bulbasaur</div>
@@ -20,7 +23,7 @@ const Card = (props) => {
             </div>    
         </div>
     </div>        
-    );
-   };
-   
-   export default Card;
+  );
+};
+  
+export default Card;

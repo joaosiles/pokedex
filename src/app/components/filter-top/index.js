@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const FilterTop = (props) => {
-    return (
+  return (
     <div className='flex flex-nowrap w-full'>
         <div id='searchBox' className='flex justify-between items-center my-5 py-3'>
             <input
@@ -23,6 +23,6 @@ const FilterTop = (props) => {
         </div>
     </div>        
     );
-   };
+  };
    
-   export default FilterTop;
+  export default FilterTop;
