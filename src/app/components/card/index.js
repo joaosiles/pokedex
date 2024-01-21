@@ -13,13 +13,17 @@ return (
               alt={pokemonData ? pokemonData.pokemonData.name : ''}
             />
             <div>
-                <div className='number mt-2'>Nº 001</div>
-                <div className='name'>Bulbasaur</div>
+                <div className='number mt-2'>Nº{pokemonData ? pokemonData.pokemonData.national_number : ''}</div>
+                <div className='name'>{pokemonData ? pokemonData.pokemonData.name : ''}</div>
                 <div className='type'>
-                    <span className='card-type flex flex-nowrap'>
-                        Grass
-                    </span>
-                </div>
+                <span className='card-type flex flex-nowrap'>
+                  {pokemonData.pokemonData.type.map((type, typeIndex) => (
+                    <div key={typeIndex} className={`space-type m-2 ${type}`}>
+                      {type}
+                    </div>
+                  ))}
+                </span>
+              </div>
             </div>    
         </div>
     </div>        

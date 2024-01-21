@@ -53,15 +53,15 @@ export default function Home() {
         <FilterTop></FilterTop>
       </div>
 
-      <div className='flex flex-row contentDex my-4  mx-20'>
-        <div className='flex w-1/5 h-dvh'>
+      <div className='flex flex-row contentDex my-4 mx-20'>
+        <div className='flex w-1/5'>
           <FilterLeft></FilterLeft>
         </div>
-        <div className='flex w-4/5 h-dvh flex-wrap space-between'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4'>
           {
             apiResponse &&
             apiResponse[0][1].map((monster, index) => (
-              <Card className='mb-5' key={index} pokemonData={monster}></Card>
+              <Card key={index} pokemonData={monster}></Card>
             ))
           }
         </div>

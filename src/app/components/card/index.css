@@ -27,8 +27,8 @@
   }
 
 #card {
-    width: 300px;
-    height: 90px;
+    width: 200px;
+    height: 400px;
 
     .pokemon {
         img {
@@ -49,10 +49,65 @@
         }
 
         .type {
-            border-radius: 5px;
-            background-color: var(--grass);
-            width: fit-content;
-            padding: 8px;
+            .space-type {
+              border-radius: 5px;            
+              width: fit-content;
+              padding: 8px;
+            }
+            .Fire{
+              background-color: var(--fire);
+            }
+            .Normal{
+              background-color: var(--normal);
+            }
+            .Water{
+              background-color: var(--water);
+            }
+            .Grass{
+              background-color: var(--grass);
+            }
+            .Ice{
+              background-color: var(--ice);
+            }
+            .Poison{
+              background-color: var(--poison);
+            }
+            .Ground{
+              background-color: var(--ground);
+            }
+            .Flying{
+              background-color: var(--flying);
+            }
+            .Bug{
+              background-color: var(--bug);
+            }
+            .Rock{
+              background-color: var(--rock);
+            }
+            .Ghost{
+              background-color: var(--ghost);
+            }
+            .Dragon{
+              background-color: var(--dragon);
+            }
+            .Dark{
+              background-color: var(--dark);
+            }
+            .Steel{
+              background-color: var(--steel);
+            }
+            .Fairy{
+              background-color: var(--fairy);
+            }
+            .Psychic{
+              background-color: var(--psychic);
+            }
+            .Electric{
+              background-color: var(--electric);
+            }
+            .Fighting{
+              background-color: var(--fighting);
+            }
         }
     }
 }
