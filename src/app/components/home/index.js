@@ -6,7 +6,7 @@ import FilterTop from '../filter-top'
 import FilterLeft from '../filter-left'
 import Card from '../card'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faSignOut } from '@fortawesome/free-solid-svg-icons'
+import { faSignOut } from '@fortawesome/free-solid-svg-icons'
 
 export default function Home() {
   return (

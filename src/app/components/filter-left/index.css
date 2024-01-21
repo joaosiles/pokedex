@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --border-red: #E2350D;
+    --selected-red: #f7dad4;
+    --foreground-white: #FFFFFF;
+    
+  }
+
+.checkbox-container {
+    display: inline-block;
+    position: relative;
+}
+
+.checkbox-container input[type="checkbox"] {
+    display: none; /* Oculta a caixa de seleção padrão */
+}
+
+.checkbox-container label {
+    display: block;
+    width: auto;
+    padding: 4px 8px;
+    height: 35px;
+    background-color: var(--foreground-white); /* Cor de fundo padrão */
+    border: 1px solid var(--border-red);
+    border-radius: 20px;
+    color: var(--border-red);
+    cursor: pointer;
+}
+
+.checked label {
+    display: block;
+    width: auto;
+    padding: 4px 8px;
+    height: 35px;
+    background-color: var(--selected-red); /* Cor de fundo padrão */
+    border: 1px solid var(--border-red);
+    border-radius: 20px;
+    color: var(--border-red);
+    cursor: pointer; 
+}
+
+.checkbox-container input[type="checkbox"]:checked + label {
+    background-color: var(--selected-red); /* Cor de fundo quando o checkbox está marcado */
+}
+
+label {
+    padding-top: 4px;
+    padding-left: 4px;
+}
