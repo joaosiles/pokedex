@@ -54,7 +54,7 @@ export default function Home() {
       </div>
 
       <div className='flex flex-row contentDex my-4 mx-20'>
-        <div className='flex w-1/5'>
+        <div className='flex w-1/5 mr-8'>
           <FilterLeft></FilterLeft>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4'>

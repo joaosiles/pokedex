@@ -1,72 +1,90 @@
-"use client"
-import React, { useState } from 'react'
-import Switch from '@mui/material/Switch'
+import React, { useState } from 'react';
+import Switch from '@mui/material/Switch';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import './index.css'
+import './index.css';
 
 const FilterLeft = (props) => {
-    const [isChecked, setIsChecked] = useState(false);
-    const [showFavs, setShowFavs] = useState(false);
+  const [checkedTypes, setCheckedTypes] = useState([]);
+  const [showFavs, setShowFavs] = useState(false);
 
-    const handleCheckboxChange = () => {
-        setIsChecked(!isChecked);
-    };
+  const handleCheckboxChange = (type) => {
+    setCheckedTypes((prevTypes) => {
+      if (prevTypes.includes(type)) {
+        const updatedTypes = prevTypes.filter((checkedType) => checkedType !== type);
+        console.log(`Tipo ${type} removido:`, updatedTypes);
+        return updatedTypes;
+      } else {
+        const updatedTypes = [...prevTypes, type];
+        console.log(`Tipo ${type} adicionado:`, updatedTypes);
+        return updatedTypes;
+      }
+    });
+  };
+  
 
-    const handleFavsChange = () => {
-        setShowFavs(!isChecked);
-    };
+  const handleFavsChange = () => {
+    setShowFavs(!showFavs);
+  };
 
-    const red =  createTheme({
-        components: {
-          MuiSwitch: {
-            styleOverrides: {
-              switchBase: {                
-                color: "#E1E1E1"
-              },
-              colorPrimary: {
-                "&.Mui-checked": {                  
-                  color: "#E2350D"
-                }
-              },
-              track: {                
-                opacity: 0.2,
-                backgroundColor: "F1F1F1",
-                ".Mui-checked.Mui-checked + &": {                  
-                  opacity: 0.7,
-                  backgroundColor: "#f7dad4"
-                }
-              }
+  const types = [
+    'Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting',
+    'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost',
+    'Dark', 'Steel', 'Dragon', 'Fairy'
+  ];
+
+  const red = createTheme({
+    components: {
+      MuiSwitch: {
+        styleOverrides: {
+          switchBase: {
+            color: "#E1E1E1"
+          },
+          colorPrimary: {
+            "&.Mui-checked": {
+              color: "#E2350D"
+            }
+          },
+          track: {
+            opacity: 0.2,
+            backgroundColor: "F1F1F1",
+            ".Mui-checked.Mui-checked + &": {
+              opacity: 0.7,
+              backgroundColor: "#f7dad4"
             }
           }
         }
-      });
+      }
+    }
+  });
 
-    return (
-        <div className='w-full'>
-            <div className='w-full'>
-                Filtrar por tipo:    
-            </div>
-            <div className={`flex flex-wrap checkbox-container mt-2 ${isChecked ? 'checked' : ''}`}>
-                <label>
-                    Checkbox
-                    <input
-                        type="checkbox"
-                        id="checktype"
-                        checked={isChecked}
-                        onChange={handleCheckboxChange}
-                    />
-                </label>
-            </div>
-            <div className='w-full'>
-                Filtrar Favoritos
-            </div>
-            <div className='w-full justify-start'>
-                <ThemeProvider theme={red}>
-                    <Switch/>
-                </ThemeProvider>
-            </div>
+  return (
+    <div className='flex flex-wrap space-x-2 h-20'>
+      <div className='w-full'>
+        Filtrar por tipo:
+      </div>
+      {types.map((type, index) => (
+        <div className={`checkbox-container my-1 ${checkedTypes.includes(type) ? 'checked' : ''}`}>          
+            <label key={index} className={`${checkedTypes.includes(type) ? 'checked' : ''}`}>
+              {type}
+              <input
+                type="checkbox"
+                id={`checktype-${index}`}
+                checked={checkedTypes.includes(type)}
+                onChange={() => handleCheckboxChange(type)}
+              />
+            </label>        
         </div>
-    );
+        ))}
+      <div className='w-full mt-8'>
+        Filtrar Favoritos
+      </div>
+      <div className='w-full justify-start'>
+        <ThemeProvider theme={red}>
+          <Switch checked={showFavs} onChange={handleFavsChange} />
+        </ThemeProvider>
+      </div>
+    </div>
+  );
 };
 
 export default FilterLeft;

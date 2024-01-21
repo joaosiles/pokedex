@@ -3,8 +3,6 @@ import './index.css'
 
 const Card = (pokemonData) => {
 
-console.log(pokemonData.pokemonData)
-  
 return (
     <div id='card' className='flex flex-wrap'>
         <div className='pokemon'>

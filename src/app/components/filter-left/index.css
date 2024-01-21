@@ -11,6 +11,7 @@
 
 .checkbox-container {
     display: inline-block;
+    height: -10px;
     position: relative;
 }
 
