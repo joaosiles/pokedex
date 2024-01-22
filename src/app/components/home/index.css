@@ -3,6 +3,17 @@
     --white: #FFFFFF;
   }
   
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--foreground-red);    
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0; 
+  }
   
   body {
     .headerDex {
