@@ -14,22 +14,43 @@ import React, { useEffect, useState  } from 'react'
 
 export default function Home() {
 
-  const [apiResponse, setApiResponse] = useState(null);
-  const [pokemon, setPokemon] = useState(null);
+  const [apiResponse, setApiResponse] = useState(null);  
+  const [sideTypeFilter, setSideTypeFilter] = useState([]); 
+  const [pokemons, setPokemons] = useState([]); 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');        
-        setApiResponse(Object.entries(response.data))        
+        setApiResponse(Object.entries(response.data)[0][1])
+        setPokemons((prevData) => {
+          return apiResponse
+        })
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
+    fetchData();     
+  }, []);  
 
-    fetchData();
-  }, []);
 
+  const typeFilter = (newData) => {
+    setSideTypeFilter((prevData) => {
+      return newData;
+    });
+    let filteredResults = apiResponse; 
+
+    newData.forEach((type) => {
+      
+      filteredResults = filteredResults.filter((pokemon) => {
+        return pokemon.type.includes(type);
+      });
+    });
+    
+    setApiResponse(filteredResults);
+  };
+  
+  
   return (
     <main className="flex flex-col">
       <div className='flex flex-row items-center headerDex'>
@@ -55,12 +76,12 @@ export default function Home() {
 
       <div className='flex flex-row contentDex my-4 mx-20'>
         <div className='flex w-1/5 mr-8'>
-          <FilterLeft></FilterLeft>
+          <FilterLeft filter={sideTypeFilter} updateArrayTypeFilter={typeFilter}></FilterLeft>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4'>
           {
             apiResponse &&
-            apiResponse[0][1].map((monster, index) => (
+            apiResponse.map((monster, index) => (
               <Card key={index} pokemonData={monster}></Card>
             ))
           }

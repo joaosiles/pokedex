@@ -3,24 +3,23 @@ import Switch from '@mui/material/Switch';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './index.css';
 
-const FilterLeft = (props) => {
+const FilterLeft = ({filter, updateArrayTypeFilter}) => {
   const [checkedTypes, setCheckedTypes] = useState([]);
   const [showFavs, setShowFavs] = useState(false);
 
   const handleCheckboxChange = (type) => {
     setCheckedTypes((prevTypes) => {
       if (prevTypes.includes(type)) {
-        const updatedTypes = prevTypes.filter((checkedType) => checkedType !== type);
-        console.log(`Tipo ${type} removido:`, updatedTypes);
-        return updatedTypes;
-      } else {
-        const updatedTypes = [...prevTypes, type];
-        console.log(`Tipo ${type} adicionado:`, updatedTypes);
-        return updatedTypes;
-      }
+        const updatedTypesFiltered = prevTypes.filter((checkedType) => checkedType !== type);        
+        updateArrayTypeFilter(updatedTypesFiltered)
+        return updatedTypesFiltered;
+      } 
+        const updatedTypesFiltered = [...prevTypes, type];        
+        updateArrayTypeFilter(updatedTypesFiltered)
+        return updatedTypesFiltered;
+      
     });
   };
-  
 
   const handleFavsChange = () => {
     setShowFavs(!showFavs);
@@ -63,7 +62,9 @@ const FilterLeft = (props) => {
         Filtrar por tipo:
       </div>
       {types.map((type, index) => (
-        <div className={`checkbox-container my-1 ${checkedTypes.includes(type) ? 'checked' : ''}`}>          
+        <div
+          className={`checkbox-container my-1 ${checkedTypes.includes(type) ? 'checked' : ''}`}          
+        >          
             <label key={index} className={`${checkedTypes.includes(type) ? 'checked' : ''}`}>
               {type}
               <input
