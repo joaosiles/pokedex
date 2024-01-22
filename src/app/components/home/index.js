@@ -25,11 +25,10 @@ export default function Home() {
         let data = Object.entries(response.data)[0][1].map((item) => {
           item.fav = false
           return item
-        })
-        console.log(data)
+        })        
         setApiResponse(data)
         setPokemons(data)
-        console.log(pokemons)
+        
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -55,19 +54,20 @@ export default function Home() {
   };
 
   const textFilter = (newData) => {
-    setSideTypeFilter(newData);
-    console.log("newData", newData)
-    
-    let filteredResults = pokemons;    
-    filteredResults =
-      apiResponse.filter((pokemon) =>
-        pokemon.name.includes(newData) || pokemon.national_number.includes(newData) 
-      )    
+    setSideTypeFilter(newData);    
+  
+    const lowercasedData = newData.toLowerCase();
+  
+    let filteredResults = apiResponse.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(lowercasedData) ||
+      pokemon.national_number.toLowerCase().includes(lowercasedData)
+    );
+  
     setPokemons(filteredResults);
   };
+  
 
-  const orderFilter = (sortOption) => {
-    console.log(sortOption)
+  const orderFilter = (sortOption) => {    
     let results = pokemons.sort((a, b) => {
       const numA = parseInt(a.national_number);
       const numB = parseInt(b.national_number);
@@ -94,9 +94,8 @@ export default function Home() {
         return 0;      }
   
       
-    });
-  
-    console.log(results);
+    });  
+    
     setPokemons([...results]);
   };
 
