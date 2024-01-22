@@ -47,6 +47,21 @@ export default function Home() {
     
     setPokemons(filteredResults);    
   };
+
+  const textFilter = (newData) => {
+    setSideTypeFilter(newData);
+    console.log("newData", newData)
+    
+    let filteredResults = pokemons;    
+    filteredResults =
+      apiResponse.filter((pokemon) =>
+        pokemon.name.includes(newData) || pokemon.national_number.includes(newData) 
+      )
+      
+    
+    
+    setPokemons(filteredResults);
+  };
   
   
   return (
@@ -69,7 +84,7 @@ export default function Home() {
       </div>
 
       <div className='flex my-4 mx-20'>
-        <FilterTop></FilterTop>
+      <FilterTop onFilter={textFilter}></FilterTop>
       </div>
 
       <div className='flex flex-row contentDex my-4 mx-20'>
