@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Switch from '@mui/material/Switch';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './index.css';
-import { Newsreader } from 'next/font/google';
 
 const FilterLeft = ({favFilter, updateArrayTypeFilter}) => {
   const [checkedTypes, setCheckedTypes] = useState([]);

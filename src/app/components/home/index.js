@@ -97,7 +97,7 @@ export default function Home() {
     });
   
     console.log(results);
-    setPokemons([...results]); // Usando spread operator para criar uma nova referência
+    setPokemons([...results]);
   };
 
   const favFilter = (showFavs) => {

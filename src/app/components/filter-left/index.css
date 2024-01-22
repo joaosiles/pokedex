@@ -16,7 +16,7 @@
 }
 
 .checkbox-container input[type="checkbox"] {
-    display: none; /* Oculta a caixa de seleção padrão */
+    display: none; 
 }
 
 .checkbox-container label {
@@ -24,7 +24,7 @@
     width: auto;
     padding: 4px 8px;
     height: 35px;
-    background-color: var(--foreground-white); /* Cor de fundo padrão */
+    background-color: var(--foreground-white); 
     border: 1px solid var(--border-red);
     border-radius: 20px;
     color: var(--border-red);
@@ -36,7 +36,7 @@
     width: auto;
     padding: 4px 8px;
     height: 35px;
-    background-color: var(--selected-red); /* Cor de fundo padrão */
+    background-color: var(--selected-red); 
     border: 1px solid var(--border-red);
     border-radius: 20px;
     color: var(--border-red);
@@ -44,7 +44,7 @@
 }
 
 .checkbox-container input[type="checkbox"]:checked + label {
-    background-color: var(--selected-red); /* Cor de fundo quando o checkbox está marcado */
+    background-color: var(--selected-red); 
 }
 
 label {
