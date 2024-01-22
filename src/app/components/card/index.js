@@ -8,7 +8,9 @@ const Card = (pokemonData) => {
 
   const favChange = () => {
     let heart = fav
-    setFav(!heart)    
+    setFav(!heart)
+    console.log(pokemonData.pokemonData)
+    pokemonData.pokemonData.fav = !fav
   }
 
 return (

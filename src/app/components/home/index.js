@@ -22,8 +22,14 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');        
-        setApiResponse(Object.entries(response.data)[0][1])
-        setPokemons(Object.entries(response.data)[0][1])
+        let data = Object.entries(response.data)[0][1].map((item) => {
+          item.fav = false
+          return item
+        })
+        console.log(data)
+        setApiResponse(data)
+        setPokemons(data)
+        console.log(pokemons)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -93,6 +99,16 @@ export default function Home() {
     console.log(results);
     setPokemons([...results]); // Usando spread operator para criar uma nova referência
   };
+
+  const favFilter = (showFavs) => {
+    if (showFavs) {
+      const filteredResults = pokemons.filter((pokemon) => pokemon.fav === true);
+      setPokemons(filteredResults);
+    } else {      
+      setPokemons(apiResponse);
+    }
+  };
+  
   
   
   return (
@@ -115,12 +131,12 @@ export default function Home() {
       </div>
 
       <div className='flex my-4 mx-20'>
-      <FilterTop onFilter={textFilter} onOrderFilter={orderFilter}></FilterTop>
+        <FilterTop onFilter={textFilter} onOrderFilter={orderFilter}></FilterTop>
       </div>
 
       <div className='flex flex-row contentDex my-4 mx-20'>
         <div className='flex w-1/5 mr-8'>
-          <FilterLeft filter={sideTypeFilter} updateArrayTypeFilter={typeFilter}></FilterLeft>
+          <FilterLeft filter={sideTypeFilter} updateArrayTypeFilter={typeFilter} favFilter={favFilter}></FilterLeft>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4'>
           {

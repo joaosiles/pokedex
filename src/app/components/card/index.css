@@ -34,13 +34,18 @@
 
     .icon-container {
       position: relative;
-      width: fit-content; 
+      width: fit-content;
+      
+      .icon-fav {
+        color: var(--icon-red);
+      }
     }
 
     .icon-container:hover {
       .icon {
         color: var(--icon-white);
       }
+
       .icon-fav {
         color: var(--icon-red);
       }

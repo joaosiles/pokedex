@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Switch from '@mui/material/Switch';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './index.css';
+import { Newsreader } from 'next/font/google';
 
-const FilterLeft = ({filter, updateArrayTypeFilter}) => {
+const FilterLeft = ({favFilter, updateArrayTypeFilter}) => {
   const [checkedTypes, setCheckedTypes] = useState([]);
   const [showFavs, setShowFavs] = useState(false);
 
@@ -22,8 +23,13 @@ const FilterLeft = ({filter, updateArrayTypeFilter}) => {
   };
 
   const handleFavsChange = () => {
-    setShowFavs(!showFavs);
-  };
+    setShowFavs((prevShowFavs) => {
+      const newShowFavs = !prevShowFavs;
+      favFilter(newShowFavs);
+      return newShowFavs;
+    });
+  }; 
+  
 
   const types = [
     'Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting',
