@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 :root {
+    --icon-white: #FFFFFF;
     --foreground-gray: #F2F2F2;
     --font-gray: #828282;
     --font-darker: #444444;
+    --icon-red:	#E2350D;
     --fire:	#EE7F33;
     --normal:#A9A778;
     --water:#6890F0;
@@ -30,11 +32,36 @@
     width: 200px;
     height: 400px;
 
+    .icon-container {
+      position: relative;
+      width: fit-content; 
+    }
+
+    .icon-container:hover {
+      .icon {
+        color: var(--icon-white);
+      }
+      .icon-fav {
+        color: var(--icon-red);
+      }
+    }
+    
+    .icon {
+      color: var(--foreground-gray);
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1; 
+      padding: 0.2rem; 
+      border-radius: 50%; 
+    }
+
     .pokemon {
         img {
-            width: 200px;
-            background-color: var(--foreground-gray);
-            border-radius: 10px;            
+          display: block;
+          width: 200px;
+          background-color: var(--foreground-gray);
+          border-radius: 10px;            
         }
 
         .number {
