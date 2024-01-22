@@ -56,11 +56,42 @@ export default function Home() {
     filteredResults =
       apiResponse.filter((pokemon) =>
         pokemon.name.includes(newData) || pokemon.national_number.includes(newData) 
-      )
-      
-    
-    
+      )    
     setPokemons(filteredResults);
+  };
+
+  const orderFilter = (sortOption) => {
+    console.log(sortOption)
+    let results = pokemons.sort((a, b) => {
+      const numA = parseInt(a.national_number);
+      const numB = parseInt(b.national_number);
+  
+      if (sortOption === 'highNumber') {
+        if (numA > numB) {
+          return -1
+        }
+
+        if (numA < numB) {
+          return 1
+        }
+
+        return 0;
+      } else if (sortOption === 'lowerNumber') {
+        if (numA < numB) {
+          return -1
+        }
+
+        if (numA > numB) {
+          return 1
+        }
+
+        return 0;      }
+  
+      
+    });
+  
+    console.log(results);
+    setPokemons([...results]); // Usando spread operator para criar uma nova referência
   };
   
   
@@ -84,7 +115,7 @@ export default function Home() {
       </div>
 
       <div className='flex my-4 mx-20'>
-      <FilterTop onFilter={textFilter}></FilterTop>
+      <FilterTop onFilter={textFilter} onOrderFilter={orderFilter}></FilterTop>
       </div>
 
       <div className='flex flex-row contentDex my-4 mx-20'>

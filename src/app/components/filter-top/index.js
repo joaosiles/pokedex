@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
-const FilterTop = ({ onFilter }) => {
+const FilterTop = ({ onFilter, onOrderFilter }) => {
   const [inputValue, setInputValue] = useState('');
+  const [sortOption, setSortOption] = useState('lowerNumber');
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -19,6 +20,11 @@ const FilterTop = ({ onFilter }) => {
 
   const filterText = () => {
     onFilter(inputValue);
+  };
+
+  const handleSortChange = (event) => {
+    onOrderFilter(event.target.value);
+    setSortOption(event.target.value);
   };
 
   return (
@@ -40,7 +46,7 @@ const FilterTop = ({ onFilter }) => {
         </div>
         <div id='selectBox' className='flex flex-row justify-end w-full my-2 py-3'>
             <label className='my-2 mr-3'>Ordenar por</label>
-                <select id='selectTop'>
+                <select id='selectTop' onChange={handleSortChange} value={sortOption}>
                 <option value="highNumber">Maior número</option>
                 <option value="lowerNumber">Menor número</option>                
             </select>
