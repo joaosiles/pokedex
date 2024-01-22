@@ -23,9 +23,7 @@ export default function Home() {
       try {
         const response = await axios.get('https://unpkg.com/pokemons@1.1.0/pokemons.json');        
         setApiResponse(Object.entries(response.data)[0][1])
-        setPokemons((prevData) => {
-          return apiResponse
-        })
+        setPokemons(Object.entries(response.data)[0][1])
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -47,7 +45,7 @@ export default function Home() {
       });
     });
     
-    setApiResponse(filteredResults);
+    setPokemons(filteredResults);    
   };
   
   
@@ -80,8 +78,8 @@ export default function Home() {
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4'>
           {
-            apiResponse &&
-            apiResponse.map((monster, index) => (
+            pokemons &&
+            pokemons.map((monster, index) => (
               <Card key={index} pokemonData={monster}></Card>
             ))
           }
